@@ -1,0 +1,12 @@
+
+server:
+  port: 9090
+app:
+  redisHostName: redis_host
+  redisPort: 6379
+
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

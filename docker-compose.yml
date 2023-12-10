@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  product-service:
+    image: product-service
+    container_name: product-service
+    ports:
+      - "9090:9090"
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:latest"
+    hostname: redis_host
+    ports:
+      - "6379:6379"
+
