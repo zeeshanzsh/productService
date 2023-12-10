@@ -18,4 +18,5 @@ docker build -t product-service .
 **Swagger page:** http://localhost:9090/swagger-ui.html#/ \
 **Base url:** http://localhost:9090/product
 
-![](/Users/zeeshan/Desktop/Screenshot 2023-12-10 at 1.37.36 PM.png)
+![Screenshot 2023-12-10 at 1 37 36 PM](https://github.com/zeeshanzsh/productService/assets/30749560/e8a2b073-f7ee-4d64-a44d-b2d43dd2adc5)
+
