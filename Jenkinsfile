@@ -26,5 +26,13 @@ pipeline {
                 }
             }
         }
+        stage("Deploy K8 productService"){
+            steps
+                script{
+                 kubernetesDeploy (configs: 'deployment.yaml',kubeconfigId: 'kubeconfig')
+                }
+            }
+             }
+
     }
 }
