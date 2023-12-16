@@ -29,11 +29,16 @@ pipeline {
         stage("Deploy K8 productService"){
             steps{
                 script{
-                 withCredentials([kubeconfig(credentialsId: 'kubeconfig' ]) {
-                     sh 'kubectl get pods'
-                     sh 'ls -la'
-                     //sh 'kubectl apply -f deployment.yaml'
-                     sh 'kubectl get pods'
+                  withCredentials([kubeconfig(credentialsId: 'kubeconfig')]) {
+                    // Print the current directory and contents for debugging
+                    sh 'pwd'
+                    sh 'ls -la'
+
+                    // Apply the Kubernetes deployment manifest
+                    sh 'kubectl apply -f deployment.yaml'
+
+                    // Get information about the deployed pods
+                    sh 'kubectl get pods'
                  }
                 }
             }
