@@ -26,23 +26,32 @@ pipeline {
                 }
             }
         }
-        stage("Deploy K8 productService"){
-            steps{
-                script{
-                  withCredentials([kubeconfig(credentialsId: 'kubeconfig')]) {
-                    // Print the current directory and contents for debugging
-                    sh 'pwd'
-                    sh 'ls -la'
 
-                    // Apply the Kubernetes deployment manifest
-                    sh 'kubectl apply -f deployment.yaml'
+        stage("Deploy K8 productService") {
+            steps {
+                script {
+                    // Retrieve Kubernetes credentials
+                    withCredentials([kubeconfig(credentialsId: 'kubeconfig')]) {
+                        // Inside this block, you can use kubectl commands or other Kubernetes-related actions
 
-                    // Get information about the deployed pods
-                    sh 'kubectl get pods'
-                 }
+                        // Print the current directory and its contents for debugging
+                        sh 'pwd'
+                        sh 'ls -la'
+
+                        // Apply the Kubernetes deployment manifest
+                        sh 'kubectl apply -f deployment.yaml'
+
+                        // Get information about the deployed pods
+                        sh 'kubectl get pods'
+                    }
                 }
             }
-             }
+        }
+
+
+
+
+
 
     }
 }
