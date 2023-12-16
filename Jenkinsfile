@@ -37,7 +37,7 @@ pipeline {
                         // Print the current directory and its contents for debugging
                         sh 'pwd'
                         sh 'ls -la'
-                        sh ' ls -l src/main/resources/'
+                        sh 'ls -l src/main/resources/'
 
                         // Apply the Kubernetes deployment manifest
                        // sh 'kubectl apply -f /src/main/resources/deployment.yaml'

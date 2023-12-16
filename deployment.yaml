@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource kind we are creating
+metadata:
+  name: product-service
+spec:
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - name: product-service
+          image: zohanizna/product-service:latest # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379  # Port for Redis
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product-service
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+    - protocol: "TCP"
+      port: 6379  # Port for Redis
+      targetPort: 6379
+  type: NodePort
