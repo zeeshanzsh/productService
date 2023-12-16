@@ -29,7 +29,9 @@ pipeline {
         stage("Deploy K8 productService"){
             steps{
                 script{
-                 kubernetesDeploy (configs: 'deployment.yaml',kubeconfigId: 'kubeconfig')
+                 kubeconfig(credentialsId: 'kubeconfig', serverUrl: '') {
+                     sh 'kubectl get pods'
+                 }
                 }
             }
              }
