@@ -31,7 +31,7 @@ pipeline {
             steps {
                 script {
                     // Retrieve Kubernetes credentials
-                    withCredentials([kubeconfig(credentialsId: 'kubeconfig')]) {
+                    kubeconfig(credentialsId: 'kubeconfig') {
                         // Inside this block, you can use kubectl commands or other Kubernetes-related actions
 
                         // Print the current directory and its contents for debugging
