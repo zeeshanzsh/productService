@@ -29,10 +29,10 @@ pipeline {
         stage("Deploy K8 productService"){
             steps{
                 script{
-                 kubeconfig(credentialsId: 'kubeconfig', serverUrl: '') {
+                 withCredentials([kubeconfigFile(credentialsId: 'kubeconfig', variable: 'kubeconfig')]) {
                      sh 'kubectl get pods'
                      sh 'ls -la'
-                     //sh 'kubectl apply -f deployment.yaml'
+                     sh 'kubectl apply -f deployment.yaml'
                      sh 'kubectl get pods'
                  }
                 }
