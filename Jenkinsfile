@@ -39,7 +39,7 @@ pipeline {
                         sh 'ls -la'
 
                         // Apply the Kubernetes deployment manifest
-                        sh 'kubectl apply -f deployment.yaml'
+                        sh 'kubectl apply -f productService/deployment.yaml'
 
                         // Get information about the deployed pods
                         sh 'kubectl get pods'
