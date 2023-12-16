@@ -31,7 +31,8 @@ pipeline {
                 script{
                  kubeconfig(credentialsId: 'kubeconfig', serverUrl: '') {
                      sh 'kubectl get pods'
-                     sh 'kubectl apply -f deployment.yaml'
+                     sh 'ls -la'
+                     //sh 'kubectl apply -f deployment.yaml'
                      sh 'kubectl get pods'
                  }
                 }
